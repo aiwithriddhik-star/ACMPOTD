@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+int main() {
+int no;    
+cin>>no;
+int reach;
+cin>>reach;
+vector<int> v;
+int jump;
+for(int i=0;i<no-1;i++){
+    cin>>jump;
+    v.push_back(jump);
+}
+int posn=1;
+for(int i=1;posn<=no-1;i++){
+    if(reach==posn){
+        cout<<"YES";
+            return 0;
+         break;
+     
+    }
+    posn=posn+v[posn-1];
+}
+if(reach==posn){
+        cout<<"YES";
+            return 0;
+         
+     
+    }
+cout<<"NO";
+ 
+return 0;
+}
