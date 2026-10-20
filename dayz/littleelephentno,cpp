@@ -1,0 +1,45 @@
+include <bits/stdc++.h>
+using namespace std;
+ 
+bool hasCommonDigit(int x, int d) {
+    int mask = 0;
+ 
+    while (x > 0) {
+        mask |= (1 << (x % 10));
+        x /= 10;
+    }
+ 
+    while (d > 0) {
+        if (mask & (1 << (d % 10))) {
+            return true;
+        }
+        d /= 10;
+    }
+ 
+    return false;
+}
+ 
+int main() {
+    int x;
+    cin >> x;
+ 
+    int ans = 0;
+ 
+    for (int i = 1; i <= x / i; i++) {
+        if (x % i == 0) {
+            if (hasCommonDigit(x, i)) {
+                ans++;
+            }
+ 
+            int d = x / i;
+ 
+            if (d != i && hasCommonDigit(x, d)) {
+                ans++;
+            }
+        }
+    }
+ 
+    cout << ans << '\n';
+ 
+    return 0;
+}
